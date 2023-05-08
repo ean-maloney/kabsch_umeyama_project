@@ -20,14 +20,17 @@ The Kabsch-Umeyama algorithm is a simple algorithm for constructing a rotation m
 One practical application of this algorithm for image processing when the central object in an image has a standard shape and it is necessary to align these objects as closely as possible relative to one another. Specifically, we consider the scenario where we are given images of documents, where each document has a similar rectangular shape, but where they may be rotated relative to the borders of the image. For clarity of expression, we will use the term "aligned boundaries" to refer to cases where the document is "correctly" rotated relative to the image boundaries, "skew boundaries" to refer to cases other than these (see the following examples).
 
 <img src="page_rotated_45.jpg" width="250">
+
 *skew boundaries - image A*
 
 <img src="page_straight.jpg" width="250">
+
 *aligned boundaries - image B*
 
 The intuitive way of converting this geometric situation into a vector problem is to represent the images by the coordinates of their corners in the xy-plane, which will be defined relative to the borders of the images as in the following image.[^2] 
 
 <img src="fig1.JPG" width="250">
+
 *images A and B translated into points with connecting edges*
 
 We can then express each document object using the matrix form described above, where i = 4 (number of corners) and j = 2 (number of dimensions), and apply the algorithm to get the transformation matrix which rotates the document with skew boundaries into the one with aligned boundaries.
@@ -38,6 +41,7 @@ Mathematically, the intuition behind the algorithm can be hinted at given the fo
 Prior to implementing the Kabsch-Umeyama Algorithm, we need to align the centroids of the two documents to the origin. This translation is obviously needed to get the best alignment, irrespective of later rotations. This is done for each object simply by subtracting the mean value over each dimension from the actual values. 
 
 <img src="fig2.JPG" width="250">
+
 *coordinates of A and B with aligned centroids*
 
 Letting A and B be the matrix representations of the skew and aligned documents, respectively, the algorithm then proceeds according to the following steps.
@@ -69,4 +73,4 @@ Umeyama noted that earlier solutions to the minimization problem which is solved
 [^2]: For image processing, the standard is to invert the y-axis relative to the normal Cartesian coordinates, a convention which we have adopted here.
 [^3]: Adapted from Umeyama, Shinji (1991), "Least-Squares Estimation of Transformation Parameters Between Two Point Patterns", IEEE Trans, Pattern Anal. Mach. Intell. 13 (4): 376–380, Bernal et al., "A Purely Algebraic Justification of the
 Kabsch-Umeyama Algorithm", https://math.nist.gov/~JBernal/kujustf.pdf, and https://en.wikipedia.org/wiki/Kabsch_algorithm.
-[^4] Ibid.
+[^4]: Ibid.
