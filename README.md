@@ -51,7 +51,13 @@ Multiplying A by R rotates A to give the following, where the black rectangle is
 <img src="fig3.jpg">
 
 ## Accomplishments
-Though dummy images were used in place of photographs, this method could be extended to real images by applying a binary filter over the matrix representation of an image, i.e., grayscale the image and give the points which are near white a value of 1 and all the others the value 0. Assuming the document (or at least its corners) are closer to white than the background of the image, the corners can be located by an algorithm similar to the one in the notebook which can be found in this repo.
+The example above shows how to rotate the corners of a skew document A into an aligned document B, but, as can be seen in the notebook found in this repo, the algorithm can be applied to align documents with arbitrary angles of skew. Although the examples only align the corners of dummy black and white images, the method can be easily extended to real images by the following steps.
+
+1. Apply a binary filter over the matrix representation of an image, i.e., grayscale the image and give the points which are near white a value of 1 and all the others the value 0. Assuming the document (or at least its corners) are closer to white than the background of the image, the corners can be located by an algorithm similar to the one in the notebook which can be found in this repo. 
+2. The angle of rotation which was applied to the corners by R can be found using the vector rotation equation: cos($\theta$) = <u, v>/(|u||v|), where u is the i<sup>th</sup> row of A, and v is the i<sup>th</sup> row of AR. This angle of rotation can then be applied to the entire document.
+
+## Observations 
+The use of SVD of a matrix M for constructing a rotation matrix is not surprising given that the matrices U and V<sup>T</sup> can be interpreted as rotations which are applied by multiplying a vector by M. Equally intuitive is the reason for replacing the singular value matrix S by the identity matrix (or diag(1, 1, ..., -1) in some cases, since the singular value matrix represents scaling of vectors applied by multiplying by M. Since we only want the rotation, the Kabsch-Umeyama Algorithm takes U and V<sup>T</sup> and throws away S.
 
 [^1]: Throughout we will use a convention of right multiplication by rotation matrices, which will give us the transpose of the more standard left handed convention. See: https://en.wikipedia.org/wiki/Rotation_matrix.
 [^2]: For image processing, the standard is to invert the y-axis relative to the normal Cartesian coordinates, a convention which we have adopted here.
