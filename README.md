@@ -48,8 +48,8 @@ Kabsch-Umeyama Algorithm
 
 Multiplying A by R rotates a to give the following:
 
-<img src="fig3.JPG", width="250">
-*the black rectangle is A before rotation, the red rectangle is AR, and the blue rectangle is B*
+<img src="fig3.jpg", width="250">
+*the black rectangle is A before rotation, the red rectangle is AR, and the blue rectangle is B*.
 
 
 [^1]: Throughout we will use a convention of right multiplication by rotation matrices, which will give us the transpose of the more standard left handed convention. See: https://en.wikipedia.org/wiki/Rotation_matrix.
