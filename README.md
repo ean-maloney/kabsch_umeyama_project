@@ -46,11 +46,12 @@ Kabsch-Umeyama Algorithm
 3. Let $\hat{S}$ = I if det(V) * det(U) $\geq$ 0, else S' = diag(1, -1).
 4. Return 2x2 rotation matrix: R = U $\hat{S}$ V<sup>T</sup>.[^3] 
 
-Multiplying A by R rotates a to give the following:
+Multiplying A by R rotates A to give the following, where the black rectangle is A before rotation, the red rectangle is AR and the blue rectangle is B:
 
-<img src="fig3.jpg", width="250">
-*the black rectangle is A before rotation, the red rectangle is AR, and the blue rectangle is B*.
+<img src="fig3.jpg">
 
+## Accomplishments
+Though dummy images were used in place of photographs, this method could be extended to real images by applying a binary filter over the matrix representation of an image, i.e., grayscale the image and give the points which are near white a value of 1 and all the others the value 0. Assuming the document (or at least its corners) are closer to white than the background of the image, the corners can be located by an algorithm similar to the one in the notebook which can be found in this repo.
 
 [^1]: Throughout we will use a convention of right multiplication by rotation matrices, which will give us the transpose of the more standard left handed convention. See: https://en.wikipedia.org/wiki/Rotation_matrix.
 [^2]: For image processing, the standard is to invert the y-axis relative to the normal Cartesian coordinates, a convention which we have adopted here.
